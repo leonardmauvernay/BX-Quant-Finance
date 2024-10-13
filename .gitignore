@@ -1,0 +1,22 @@
+# Fichiers système
+.DS_Store
+.bash_profile
+.bashrc
+.condarc
+.gitconfig
+.Rhistory
+.RData
+.swp
+
+# Répertoires de configuration
+.vscode/
+.anaconda/
+
+# Fichiers cache et temporaires
+*.log
+*.lock
+*.pid
+cache_*
+
+# Ignorer les fichiers générés par Anaconda
+navigator_*

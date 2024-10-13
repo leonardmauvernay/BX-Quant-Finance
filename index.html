@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>BX Quant & Finance</title>
+  <meta name="author" content="Velile Vamba">
+  <meta content="" name="lorem100">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  
+
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/free.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/brand.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/flag.min.css">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+	<style type="text/css">
+		.carousel-item {
+		  height: 60vh;
+		  min-height: 350px;
+		  background: no-repeat center center scroll;
+		  -webkit-background-size: cover;
+		  -moz-background-size: cover;
+		  -o-background-size: cover;
+		  background-size: cover;
+		}
+
+    .main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.main .wrap {
+  margin: 2rem;
+
+  transform-style: preserve-3d;
+  transform: perspective(100rem);
+  cursor: pointer;
+}
+
+.main .container {
+  --rX: 0;
+  --rY: 0;
+  --bX: 50%;
+  --bY: 80%;
+
+ 
+  border: 1px solid var(--background-color);
+  border-radius: 1.6rem;
+  padding: 4rem;
+
+  display: flex;
+  align-items: flex-end;
+
+  position: relative;
+  transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
+
+  background: linear-gradient(hsla(0, 0%, 100%, .1), hsla(32, 57, 84));
+  background-position: var(--bX) var(--bY);
+  background-size: 40rem auto;
+  box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%);
+
+  transition: transform .6s 1s;
+}
+
+.main .container::before,
+.main .container::after {
+  content: "";
+
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #fff;
+
+  position: absolute;
+  z-index: 2;
+
+  opacity: .6;
+  transition: .3s;
+}
+
+.main .container::before {
+  top: 2rem;
+  right: 2rem;
+
+  border-bottom-width: 0;
+  border-left-width: 0;
+}
+
+.main .container::after {
+  bottom: 2rem;
+  left: 2rem;
+
+  border-top-width: 0;
+  border-right-width: 0;
+}
+
+.main .container--active {
+  transition: none;
+}
+
+.main .container--2 {
+  filter: hue-rotate(80deg) saturate(140%);
+}
+
+.main .container--3 {
+  filter: hue-rotate(160deg) saturate(140%);
+}
+
+.main .container p {
+  color: hsla(0, 0%, 100%, .6);
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.main .wrap:hover .container::before,
+.main .wrap:hover .container::after {
+  width: calc(100% - 4rem);
+  height: calc(100% - 4rem);
+}
+
+.main .abs-site-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: hsla(0, 0%, 0%);
+  font-size: 1.6rem;
+} 
+
+/* Container for the whole section */
+#focus-section {
+  background-image: url('assets/img/slider3.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.focus-wrapper {
+  width: 100%;
+  max-width: 1400px; /* Adjust width based on the screen size */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.focus-title {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 50px;
+}
+
+/* Panels container */
+.focus-panels {
+  display: flex;
+  gap: 40px; /* Space between the panels */
+  justify-content: center; /* Center all the panels */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual panel */
+.focus-panel {
+  flex: 1 1 30%; /* Adjust to make each panel take up 30% of the width */
+  max-width: 400px;
+  position: relative;
+  height: 450px; /* Fixed height for all panels */
+  perspective: 1000px;
+}
+
+.focus-panel .focus-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  backface-visibility: hidden;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  text-align: center;
+  transition: transform 0.6s ease;
+  color: #fff; /* Set text color to white */
+}
+
+/* Front panel */
+.focus-panel .front {
+  background-color: #203954;
+  transform: rotateY(0deg);
+}
+
+/* Back panel */
+.focus-panel .back {
+  background-color: #020a20;
+  transform: rotateY(180deg);
+}
+
+/* Flip effect */
+.focus-panel:hover .front {
+  transform: rotateY(180deg);
+}
+
+.focus-panel:hover .back {
+  transform: rotateY(360deg);
+}
+
+/* Text inside the panels */
+.focus-panel h6 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.focus-panel p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.focus-panel button {
+  margin-top: 20px;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.focus-panel button:hover {
+  background-color: #004da8;
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 992px) {
+  .focus-panels {
+    flex-wrap: wrap;
+  }
+
+  .focus-panel {
+    flex: 1 1 45%; /* Panels take up 45% width on medium screens */
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .focus-panel {
+    flex: 1 1 100%; /* Full width on small screens */
+    height: 350px;
+  }
+
+  .focus-title {
+    font-size: 36px;
+  }
+}
+
+
+.why-us {
+  /* The image used */
+  background-image: url(assets/img/slider3.png);
+
+  /* Set a specific height */
+  min-height: 350px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+	</style>
+</head>
+
+<body>
+
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        
+        <!-- <h1 class="text-light"><a href="index.html"><span>Our-Compnay Associate</span></a></h1> -->
+        <a href="/"><img src="assets/img/logo1.jpg" width = "50" height="80" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#header">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Work</a></li>
+          <li><a href="#focus-section">Our Main Focuses</a></li>
+          <li><a href="#FUN">FUN</a></li>
+          <li><a href="#team">Partners</a></li>
+		      <li><a href="#contact">Contact Us</a></li>
+        </ul>
+            
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End #header -->
+
+ <!-- ======= Hero Section ======= -->
+<section>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li> 
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One -->
+      <div class="carousel-item active" style="background-image: url(assets/img/ivb.jpeg);">
+        <div class="carousel-caption">
+          <h2 class="display-4">BX Quant & Finance</h2>
+          <p class="lead">From curious beginners to seasoned experts, we’re shaping the future of finance with data-driven strategies and innovative quantitative analysis - join us to unlock your potential!</p>
+        </div>
+      </div>
+      <!-- Slide Two -->
+      <div class="carousel-item" style="background-image: url(assets/img/comp.jpeg);">
+        <div class="carousel-caption ">
+          <h2 class="display-4">Events & Contests : Challenge Yourself, Grow Together</h2>
+          <p class="lead">Experience our finance committee’s exciting events and contests, where you can tackle real-world challenges, 
+            sharpen your skills, and connect with industry leaders. Compete, learn, and showcase your talent to take your finance career to the next level!</p>
+        </div>
+      </div>
+      <!-- Slide Three -->
+      <div class="carousel-item" style="background-image: url(assets/img/networking.jpeg)">
+        <div class="carousel-caption">
+          <h2 class="display-4">Networking and Insights : Connect and Learn</h2>
+          <p class="lead">Build connections and gain valuable insights. 
+            Network with industry leaders, learn from peers’ internship experiences, and get tips on interview questions. 
+            It’s your gateway to career growth and inside knowledge from fellow students!</p>
+        </div>
+      </div>
+      <!-- Slide Four -->
+      <div class="carousel-item" style="background-image: url(assets/img/fund.jpeg)">
+        <div class="carousel-caption">
+          <h2 class="display-4">Join the FUN for more fun!</h2>
+          <p class="lead"> The Finance University Network (FUN) brings together top academic institutions in finance to create a platform for collaboration, learning, and innovation. By connecting students, faculty, and industry leaders, FUN aims to foster knowledge sharing, joint events, and career opportunities across the globe, empowering the next generation of financial experts. </p>
+        </div>
+      </div>
+    </div>
+    
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</section>
+  
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 style="font-size: 2rem; font-weight: bold;">About Us</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2">
+            <img src="assets/img/trombi.png"  height = "200" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
+            <p><br>
+              <br></p>
+            <h3>What we do</h3>
+            <p class="">
+              <br>
+              <br>
+              <br>
+              Our mission is to build a thriving community of École Polytechnique Bachelor students and alumni who are either pursuing or working in finance, whether in quantitative finance, investment banking, or other finance-related fields.
+            </p>
+            <p>
+              With the support of our partners and sponsors, we equip students with the skills needed to succeed in finance through online courses, interview preparation, and local competitions, including those organized by our partners. <br> <br> Our experienced members share insights from their interview experiences and the admissions processes to help guide younger members into the financial world.
+            </p>
+            <p>
+              We also aim to keep our community informed about the latest developments in finance through regular newsletters and meetings.
+            </p>
+            <p>
+              Whether you're interested in quantitative finance or finance in general, join us and take the next step in your journey!
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Our Work Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 style="font-size: 2rem; font-weight: bold;">Our Work</h2>
+          <p> In modification... Stay tuned</p>
+        </div>
+          
+        </div>
+
+      </div>
+    </section><!-- End Our Work Section -->
+
+    <!-- ======= Main Focuses Section ======= -->
+
+    <section id="focus-section" class="focus-container">
+      <div class="focus-wrapper">
+        <h1 class="focus-title" style="font-size: 2rem; font-weight: bold;">Our Main Focuses</h1>
+        <ul class="focus-panels">
+          <li class="focus-panel">
+            <div class="focus-content front">
+              <h6>Connecting</h6>
+              <p>Our primary goal is to build an extensive network of students passionate about finance, both within the Bachelor Program at École Polytechnique and globally.
+              </p>
+            </div>
+            <div class="focus-content back">
+              <h6>In Practice</h6>
+              <p>
+                We engage with our community through various social media platforms—feel free to follow us and stay updated!
+                <ul>
+                  <li><a href="https://linkedin.com">LinkedIn Page</a></li>
+                  <li><a href="https://instagram.com">Instagram Page</a></li>
+                  <li><a href="https://telegram.com">Telegram News Channel</a></li>
+                </ul>
+                <br>
+                We have partnerships with firms that support our club members in implementing projects and offer access to exciting internship opportunities.
+Additionally, we compile a wide range of past interview questions, contributed by a large community of students, in a shared Google Sheet (accessible exclusively to club members). Click below to request access to the Google Sheet!
+              </p>
+              <button type="button">Click Here!</button>
+            </div>
+          </li>
+    
+          <li class="focus-panel">
+            <div class="focus-content front">
+              <h6>Learning</h6>
+              <p>Our second goal is to help students gain a solid understanding of the financial world and acquire essential skills to take their first steps in the field.
+              </p>
+            </div>
+            <div class="focus-content back">
+              <h6>In Practice</h6>
+              <p>
+                We host numerous webinars, which we announce via our Telegram and WhatsApp Channels, and Instagram page.
+We also promote finance-related events hosted by leading financial firms in Paris, where our students are invited to participate.
+Through partnerships with MCD Education and QuantIntuition, we provide free access to these platforms for students who demonstrate an active interest in finance. Click below for free access to one of these platforms!
+              </p>
+              <button type="button">Click Here!</button>
+            </div>
+          </li>
+    
+          <li class="focus-panel">
+            <div class="focus-content front">
+              <h6>Practice</h6>
+              <p>Ensuring that our club members are prepared for careers in finance is our top priority, which is why hands-on practice is central to our mission.
+              </p>
+            </div>
+            <div class="focus-content back">
+              <h6>In Practice</h6>
+              <p>
+                We encourage students to develop algorithms or projects, which can be backtested using our extensive datasets. Our partners' experts provide guidance on how to enhance these projects.
+                To help students further prepare for careers in finance, we share information about trading competitions and organize internal competitions. Click below to join our next internal competition!
+              </p>
+              <button type="button">Click Here!</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- ======= FUN Section ======= -->
+    <section id = "FUN" class="call-to-action" >
+      <div class="container">
+        <div class="text-center">
+          <div class="section-title">
+            <h2 style="color: #fff; font-size: 2rem; font-weight: bold;">The Finance University Network (FUN)</h2>
+          </div>
+          <p>As a member of the FUN, each university contributes to shaping the future of global finance by participating in research initiatives, exclusive events, and networking opportunities. Contact us if you want to join.</p>
+    
+          <div class="container-fluid">
+            <div class="col-md-12">
+              <div class="row main">
+                
+                <!-- Trinity College Dublin Section -->
+                <div class="wrap col-md-4">
+                  <h6>IRL - Trinity College Dublin</h6>
+                  <div class="container container--3">
+                    <img src="assets/img/trinity.png" alt="Trinity College Dublin" style="width: 80px; margin-bottom: 15px;">
+                    <p>Trinity College Dublin is renowned for its innovative finance programs and active global research contributions.</p>
+                    <p>As a member of the FUN, it collaborates with financial leaders worldwide.</p>
+                  </div>
+                </div>
+                
+                <!-- Essec Business School Section -->
+                <div class="wrap col-md-4">
+                  <h6>FRA - Essec Business School</h6>
+                  <div class="container container--3">
+                    <img src="assets/img/essec.jpeg" alt="Essec Business School" style="width: 80px; margin-bottom: 15px;">
+                    <p>Essec Business School excels in finance education, offering top-tier programs in investment banking, risk management, and more.</p>
+                    <p>Essec provides students hands-on experience in the global finance ecosystem.</p>
+                  </div>
+                </div>
+                
+                
+                <div class="wrap col-md-4">
+                  <h6>UK - London School of Economics</h6>
+                  <div class="container container--3">
+                    <img src="assets/img/lse.png" alt="More to Come" style="width: 80px; margin-bottom: 15px;">
+                    <p>The London School of Economics (LSE) is a crucial hub in the UK's finance network, fostering collaboration among scholars and and professionals. Its societies and connections enhance knowledge exchange, driving innovation and leadership in finance and quantitative research.</p>
+                  </div>
+                </div>
+
+                <!--
+                <div class="wrap col-md-4">
+                  <h6>More to Come</h6>
+                  <div class="container container--3">
+                    <img src="path_to_placeholder_logo.png" alt="More to Come" style="width: 80px; margin-bottom: 15px;">
+                    <p>We are continuously expanding our network by adding more prestigious universities. Stay tuned for future updates!</p>
+                  </div>
+                </div>
+                -->
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+<!-- End Fun Section -->
+
+    
+
+
+<!-- End Main Focuses Section -->
+
+    <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container" style="text-align: center;">
+      <div class="section-title">
+        <h2 style="font-size: 2rem; font-weight: bold;">Partners & Sponsors</h2>
+      </div>
+      <p>Fueling innovation and driving the future of finance with the support of world-class partners :</p>
+        <div class="col-md-8 offset-md-2">
+          <a href="https://www.janestreet.com" target="_blank">
+          <img src="assets/img/JaneStreet.png" class="rounded" width="120"  height="120" alt="...">
+          </a>
+
+          <a href="https://www.jumptrading.com" target="_blank">
+          <img src="assets/img/Jump_Trading_logo.png" class="rounded " width="120"  height="100" alt="...">
+          </a>
+
+          <a href="https://www.mcdcapital.net" target="_blank">
+          <img src="assets/img/mcd.jpeg" class="rounded " width="120"  height="120" alt="...">
+          </a>
+
+          <a href="https://www.quantintuition.com/courses/cracking-the-quant-trading-interview" target="_blank">
+          <img src="assets/img/quantIntuition.png" class="rounded " width="100"  height="100" alt="...">
+          </a>
+
+          <a href="https://www.quantco.com" target="_blank">
+          <img src="assets/img/quantco.png" class="rounded " width="210"  height="100" alt="...">
+          </a>
+        </div>
+      </div>
+    </section><!-- End Our Team Section -->
+
+    <section id="" class="why-us" style="color: #fff;">
+      <div class="container" style="text-align: center;">
+        <div class="section-title">
+          <h2 style=" color: #fff; font-size: 2rem; font-weight: bold;">Why Us</h2>
+        </div>
+          <p> In modification... Stay tuned !</p>
+    </section>
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+        <div class="row">
+          
+          <!-- About section -->
+          <div class="col-lg-4 col-md-6">
+            <div class="contact-about">
+              <h3>BX Quant & Finance</h3>
+              <p>For a brighter future in the amazing sphere of finance</p>
+              <div class="social-links">
+                <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Info section with icons and text aligned horizontally -->
+          <div class="col-lg-8 col-md-6">
+            <div class="info-icons">
+              <div class="info-item">
+                <i class="icofont-google-map"></i>
+                <p>103 avenue Henri Becquerel, Palaiseau, 91120, France</p>
+              </div>
+              <div class="info-item">
+                <i class="icofont-envelope"></i>
+                <p>committee.bxqf@binets.fr</p>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+    
+    <!-- End Contact Us Section -->
+   
+    <!-- ======= Map Section ======= -->
+    <section class="map">
+    <iframe src="https://maps.google.com/maps?q=%C3%89cole%20Polytechnique,%20Palaiseau&t=&z=13&ie=UTF8&iwloc=&output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <!-- End map section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BX Quant & Finance</span></strong>. All Rights Reserved
+      </div>
+      
+    </div>
+  </footer><!-- End #footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
